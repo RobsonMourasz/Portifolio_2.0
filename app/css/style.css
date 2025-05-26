@@ -1,81 +1,400 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-:root{
-    --background: #121212;
-    --fundo: #1e1e1f;
-    --backgroundImg: #333334;
-    --text: #ececec;
+    font-family: 'Arial', sans-serif;
 }
 
-body{
+:root {
+    --background: #0f0f0f;
+    --text-color: #fafafa;
+    --fundo: #202020;
+}
+
+body {
     background-color: var(--background);
+    color: var(--text-color);
 }
 
-.content{
+.container {
     width: 100%;
-    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin: 1em 0;
+}
+
+.perfil {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 2%;
-    gap: 5%;
-}
-
-.perfil{
-    background-color: var(--fundo);
-    width: 25%;
-    height: 80%;
-    border-radius: 10px;
+    flex-direction: column;
+    width: 300px;
+    border-radius: 20px;
     position: sticky;
-    top: 10%;
-    border: 1px solid rgba(200, 200, 200, .3);
-}   
+    background-color: var(--fundo);
+    margin-left: 2em;
+    border: 1px solid rgba(255, 255, 255, .4);
+}
 
-.perfil .perfil-header{
-    min-width: 25%;
-    height: 50%;
-    padding: 2% 0;
+.perfil i {
+    color: var(--text-color);
+}
+
+.perfil-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px 20px 0 0;
+}
+
+.perfil-header img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 20px 0;
+    position: relative;
+
+}
+
+.perfil-header::after {
+    content: '';
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    z-index: -1;
+    top: 3%;
+    border-radius: 10px;
+    background-color: var(--background);
+
+}
+
+.perfil-header>p {
+    background-color: var(--background);
+    padding: .7em .5em;
+    margin: 1em;
+    border-radius: 15px;
+}
+
+.perfil-body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: .5em 0 .5em 2em;
+}
+
+.perfil-body .email,
+.perfil-body .whatsapp,
+.perfil-body .nascimento {
+    display: flex;
+    align-items: center;
+    padding: .5em 0;
+}
+
+.icon {
+    padding: 0 .8em;
+}
+
+.message p:first-child {
+    font-size: 1em;
+}
+
+.message p:last-child {
+    font-size: .8em;
+}
+
+.perfil-footer {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 0 0 20px 20px;
+    padding-bottom: .5em;
 }
 
-.perfil .perfil-header .perfil-header-img{
+.toggle {
+    cursor: pointer;
+}
+
+.perfil-footer .git,
+.perfil-footer .linkedin,
+.perfil-footer .instagram {
+    margin: 1em 10px;
+    border-radius: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: var(--background);
-    padding: 2em;
-    border-radius: 15px;
 }
-.perfil .perfil-header .perfil-header-img img{
-    border-radius: 50%;
+
+.d-none {
+    display: none;
 }
-.container{
-    background-color: var(--fundo);
-    width: 65%;
-    height: 80%;
+
+.border {
+    display: flex;
+    width: 90%;
+    border: 1px solid var(--text-color);
+    margin: 1em 0;
     border-radius: 10px;
+}
+
+.content {
+    width: calc(100% - 400px);
+    border-radius: 15px;
+    margin-left: 2em;
+    background-color: var(--fundo);
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    border: 1px solid rgba(255, 255, 255, .4);
+}
+
+.content .menu {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2em;
+}
+
+.title {
+    width: 40%;
+    font-size: 1.5em;
+}
+
+.menu-itens {
+    width: 60%;
+    background-color: var(--background);
+    border-radius: 0 0 10px 10px;
+}
+
+.content .menu ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 1em 0;
+}
+
+.content .menu ul li {
+    list-style: none;
+    cursor: pointer;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.content .menu ul li a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--text-color);
+    transform: scale(1.0);
+}
+
+.link-active {
+    color: #c3a95c !important;
+}
+
+.content .menu ul li a:hover {
+    color: #898989;
+    transform: scale(1.1);
+    transition: color 0.5s ease-in-out, transform .5s ease-in-out;
+}
+
+#sobre {
+    width: 100%;
+    min-height: 500px;
+    padding: 1em;
+    line-height: 30px;
+    color: var(--text-color);
+}
+
+#sobre .projetos {
+    display: flex;
+    flex-direction: column;
+}
+
+#sobre .projetos .title {
+    width: 100%;
+    text-align: center;
+}
+
+#sobre .projetos .body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    margin-top: 1em;
 
 }
 
-@media screen and (max-width: 900px) {
-    .content{
+#sobre .projetos .body .card-projetos {
+    width: calc(50% - 1em);
+    min-height: 150px;
+    background-color: var(--fundo);
+    border-radius: 10px;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background);
+    border: 1px solid #c3a95c;
+}
+
+#sobre .projetos .body .card-projetos .card-header-prj {
+    width: 110px;
+    text-align: center;
+}
+
+#sobre .projetos .body .card-projetos .car-body-prj p {
+    font-size: .8em;
+}
+
+#habilidades {
+    width: 100%;
+    padding: 1em;
+    line-height: 30px;
+    color: var(--text-color);
+}
+
+#habilidades ul{
+    position: relative;
+}
+
+#habilidades .title {
+    width: 100%;
+    padding: .8em 0 .8em  2em;
+    position: relative;
+}
+
+#habilidades .title h2::before {
+    content: "";
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    background-image: url('/app/image/graduacao.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 1em;
+    position: absolute;
+    left: -2%;
+    top: 15%;
+}
+
+#habilidades ul li {
+    list-style: none;
+    /* Remove o estilo padrão */
+    padding-left: 2em;
+}
+
+#habilidades ul li::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: rgba(195, 169, 92, 0.8);;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 5px rgba(255, 141, 26, 0.5);
+    margin-right: 1.5em ;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .container {
+        justify-content: start !important;
+        padding: 1.5em 0;
+    }
+
+    .perfil .toggle {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+    }
+
+    .container {
         flex-direction: column;
-        padding: 2%;
+        align-items: center;
+        justify-content: center;
     }
 
-    .perfil{
-        width: 80%;
+    .perfil {
+        width: 90%;
+        margin-left: 0;
+    }
+
+    .perfil-header {
+        margin: 1.5em 0;
+    }
+
+    .perfil-header img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .perfil-body {
+        padding: 0em;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+    }
+
+    .perfil-body.active {
+        max-height: 250px;
+    }
+
+    .perfil-footer {
+        width: 100%;
+    }
+
+    .container {
         height: auto;
     }
 
-    .container{
-        width: 80%;
-        height: auto;
+    .perfil-header::after {
+        top: 7%;
     }
+
+    .content {
+        width: 90%;
+        margin-top: 1em;
+        margin-left: 0;
+    }
+
+    .title {
+        width: 100%;
+        text-align: center;
+    }
+
+    .menu-itens {
+        width: 100%;
+        background-color: transparent;
+        padding: 0 !important;
+    }
+
+    .content .menu {
+        flex-direction: column-reverse;
+        padding: 0 0.5em;
+    }
+
+    #sobre {
+        margin: 0;
+        padding: .5em;
+        text-align: justify;
+    }
+
+    #sobre .projetos .title {
+        padding: 1em 0 0 0;
+    }
+
+    #sobre .projetos .body .card-projetos {
+        width: 100%;
+        min-height: 100px;
+        margin-bottom: 1em;
+    }
+
 }
