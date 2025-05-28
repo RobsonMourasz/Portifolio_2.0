@@ -1,10 +1,9 @@
 <?php
+use Dotenv\Dotenv;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-use Dotenv\Dotenv;
 require 'vendor/autoload.php';
-require '.env';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $dotenv = Dotenv::createImmutable(__DIR__);
@@ -89,13 +88,14 @@ Fique tranquilo, estamos cuidando disso para você!
 
 Atenciosamente, Robson Moura`;
     try {
+
         //Server settings
         $mail->SMTPDebug = SMTP::DEBUG_OFF;
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = getenv(USERNAME);                     //SMTP username
-        $mail->Password   = getenv(PASSWORD);                               //SMTP password
+        $mail->Username   = getenv('SMTP_USERNAME');                     //SMTP username
+        $mail->Password   = getenv('SMTP_PASSWORD');                               //SMTP password
        // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
        // $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // STARTTLS para porta 587
