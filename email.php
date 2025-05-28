@@ -4,17 +4,18 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
+// Carregar variáveis de ambiente
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->safeLoad();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $dotenv = Dotenv::createImmutable(__DIR__);
-    $dotenv->load();
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
     $mail = new PHPMailer(true);
     date_default_timezone_set('America/Sao_Paulo'); // Define o fuso horário para o Brasil
     $date = new DateTime();
     $formattedDate = $date->format('d/m/Y H:i:s');  
-$tiked = uniqid(); // Get the current timestamp
-$mensagem = "
+    $tiked = uniqid(); // Get the current timestamp
+    $mensagem = "
 <!DOCTYPE html>
 <html lang='pt'>
 <head>
@@ -96,8 +97,6 @@ Atenciosamente, Robson Moura`;
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
         $mail->Username   = getenv('SMTP_USERNAME');                     //SMTP username
         $mail->Password   = getenv('SMTP_PASSWORD');                               //SMTP password
-       // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-       // $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // STARTTLS para porta 587
         $mail->Port = 587;
         
