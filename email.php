@@ -2,10 +2,13 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+use Dotenv\Dotenv;
 require 'vendor/autoload.php';
-
+require '.env';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $dotenv = Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
     $mail = new PHPMailer(true);
     date_default_timezone_set('America/Sao_Paulo'); // Define o fuso horário para o Brasil
@@ -91,8 +94,8 @@ Atenciosamente, Robson Moura`;
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'robsonic10@gmail.com';                     //SMTP username
-        $mail->Password   = 'awbsmssgfthpfgws';                               //SMTP password
+        $mail->Username   = getenv(USERNAME);                     //SMTP username
+        $mail->Password   = getenv(PASSWORD);                               //SMTP password
        // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
        // $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // STARTTLS para porta 587
