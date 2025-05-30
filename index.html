@@ -10,6 +10,8 @@
 </head>
 
 <body>
+    
+    <div id="carregando" class="carregando"></div>
     <div class="container">
         <div class="perfil">
             <div class="toggle d-none"><i class="bi bi-code"> Ver mais...</i></div>
@@ -73,17 +75,19 @@
         </div> <!-- perfil -->
 
         <div class="content">
+
             <div class="menu">
-                <div class="title">Titulo</div>
+                <div class="title" id="Titulo">Titulo</div>
                 <div class="menu-itens">
                     <ul>
-                        <li><a href="#sobre" class="link-active">Sobre</a></li>
-                        <li><a href="#habilidades">Habilidades</a></li>
-                        <li><a href="#projetos">Projetos</a></li>
-                        <li><a href="#contato">Contato</a></li>
+                        <li><a targ="menu" href="#sobre" class="link-active">Sobre</a></li>
+                        <li><a targ="menu" href="#habilidades">Habilidades</a></li>
+                        <li><a targ="menu" href="#projetos">Projetos</a></li>
+                        <li><a targ="menu" href="#contato">Contato</a></li>
                     </ul>
                 </div>
             </div>
+
             <div class="sobre d-none" id="sobre">
 
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In at harum nihil pariatur iusto magnam
@@ -333,7 +337,7 @@
                 </div> <!-- container -->
             </div> <!-- projetos -->
 
-            <div class="contato" id="contato">
+            <div class="contato d-none" id="contato">
                 <form action="" id="form_contato">
                     <div class="group-input">
                         <label for="email">E-mail</label>
@@ -400,6 +404,7 @@
 
     </script>
     <script src="app/js/contato.acoes.js"></script>
+    <script src="app/js/index.acoes.js"></script>
 </body>
 
 </html>
