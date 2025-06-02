@@ -1,12 +1,11 @@
 <?php
-use Dotenv\Dotenv;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
+require 'pass.php';
 // Carregar variáveis de ambiente
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->safeLoad();
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
@@ -95,8 +94,8 @@ Atenciosamente, Robson Moura`;
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = getenv('SMTP_USERNAME');                     //SMTP username
-        $mail->Password   = getenv('SMTP_PASSWORD');                               //SMTP password
+        $mail->Username   = SMTP_USERNAME;                     //SMTP username
+        $mail->Password   = SMTP_PASSWORD;                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // STARTTLS para porta 587
         $mail->Port = 587;
         
