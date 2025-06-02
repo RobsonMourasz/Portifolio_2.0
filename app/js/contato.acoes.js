@@ -10,6 +10,8 @@
         if (data.status === 'success') {
             document.getElementById('form_contato').reset();
             alert('Mensagem enviada com sucesso!');
+        }else{
+            alert('Erro ao enviar mensagem: ' + data.message);
         }
     })
 })();
