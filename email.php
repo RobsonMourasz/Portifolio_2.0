@@ -2,8 +2,8 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-require 'vendor/autoload.php';
-require 'pass.php';
+require __DIR__.'/vendor/autoload.php';
+require __DIR__.'/pass.php';
 // Carregar variáveis de ambiente
 
 
